@@ -1,0 +1,13 @@
+Proxy_path              = /afs/cern.ch/user/a/adlintul/HTCondor/x509up
+Working_directory       = /afs/cern.ch/user/a/adlintul/HTCondor
+executable              = step10_ntuple.sh
+arguments               = $(Proxy_path) $(ClusterId) $(ProcId) DAS_noPU_filenames_short.txt 5 0 PU $(Working_directory)
+output                  = output/step10.$(ClusterId).$(ProcId).out
+error                   = error/step10.$(ClusterId).$(ProcId).err
+log                     = log/step10.$(ClusterId).log
+WHEN_TO_TRANSFER_OUTPUT = ON_EXIT_OR_EVICT
++SpoolOnEvict           = False
++JobFlavour		        = "microcentury"
++AccountingGroup        = "group_u_CMST3.all"
+
+queue 2
